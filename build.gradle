@@ -26,8 +26,6 @@ ext {
     okhttpVersion = '3.11.0'
     retrofitVersion = '2.3.0'
 
-    daggerVersion = '2.7'
-
     rxJavaVersion = '2.0.2'
     rxAndroidVersion = '2.0.2'
     rxLifecycle = '2.2.1'

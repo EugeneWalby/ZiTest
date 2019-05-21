@@ -1,10 +1,13 @@
 package com.eugene.examples.zitest.data.network.model.response;
 
+import com.eugene.examples.zitest.domain.model.DataEntity;
+import com.eugene.examples.zitest.domain.model.ResultEntity;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ResultResponse {
+public class ResultResponse implements BaseResponse<ResultEntity> {
     @SerializedName("message")
     private String message;
 
@@ -12,10 +15,11 @@ public class ResultResponse {
     private List<DataResponse> dataList;
 
     @Override
-    public String toString() {
-        return "ResultResponse{" +
-                "message='" + message + '\'' +
-                ", dataList=" + dataList +
-                '}';
+    public ResultEntity transformToDomain() {
+        List<DataEntity> dataList = new ArrayList<>();
+        for (int i = 0; i < this.dataList.size(); i++) {
+            dataList.add(this.dataList.get(i).transformToDomain());
+        }
+        return new ResultEntity(message, dataList);
     }
 }

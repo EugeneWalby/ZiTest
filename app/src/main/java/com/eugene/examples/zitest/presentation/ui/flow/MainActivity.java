@@ -8,6 +8,8 @@ import com.eugene.examples.zitest.presentation.ui.base.BaseActivity;
 import com.eugene.examples.zitest.presentation.ui.base.BaseView;
 
 public class MainActivity extends BaseActivity implements BaseView {
+    private MainPresenter presenter;
+
     @Override
     protected int provideActivity() {
         return R.layout.activity_main;
@@ -32,7 +34,7 @@ public class MainActivity extends BaseActivity implements BaseView {
     protected void onResume() {
         super.onResume();
         presenter.bind(this);
-        ((MainPresenterImpl) presenter).getResultsByQuery("cat");
+        presenter.getResultsByQuery("cat");
     }
 
     @Override

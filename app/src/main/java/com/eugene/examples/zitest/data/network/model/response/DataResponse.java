@@ -1,8 +1,9 @@
 package com.eugene.examples.zitest.data.network.model.response;
 
+import com.eugene.examples.zitest.domain.model.DataEntity;
 import com.google.gson.annotations.SerializedName;
 
-public class DataResponse {
+public class DataResponse implements BaseResponse<DataEntity> {
     @SerializedName("url")
     private String url;
 
@@ -10,10 +11,7 @@ public class DataResponse {
     private String title;
 
     @Override
-    public String toString() {
-        return "DataResponse{" +
-                "url='" + url + '\'' +
-                ", title='" + title + '\'' +
-                '}';
+    public DataEntity transformToDomain() {
+        return new DataEntity(url, title);
     }
 }
